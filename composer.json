@@ -1,0 +1,27 @@
+{
+	"name": "rickhub/http-middleware",
+	"description": "Simple HTTP middleware implementation (PSR-7, PSR-15)",
+	"keywords": [
+		"psr",
+		"psr-7",
+		"psr-15",
+		"http",
+		"http-message",
+		"http-middleware",
+		"request",
+		"response"
+	],
+	"authors": [
+		{
+			"name": "rckd"
+		}
+	],
+	"require": {
+		"rickhub/psr-http-middleware": "1.0.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"V12\\Http\\Middleware\\": "src/"
+		}
+	}
+}
