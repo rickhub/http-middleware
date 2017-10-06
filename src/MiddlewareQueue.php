@@ -40,7 +40,7 @@ class MiddlewareQueue{
    * @param ResponseInterface $response
    * @return RequestHandlerInterface
    */
-  public function createStack(ResponseInterface $response): RequestHandlerInterface{
+  protected function createStack(ResponseInterface $response): RequestHandlerInterface{
     return array_reduce(array_reverse($this->middlewares), function(
       RequestHandlerInterface $frame,
       MiddlewareInterface $middleware
