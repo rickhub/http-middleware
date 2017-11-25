@@ -16,7 +16,7 @@ class MiddlewareQueue{
    * @param MiddlewareInterface $middleware
    * @return MiddlewareQueue
    */
-  public function add(MiddlewareInterface $middleware): MiddlewareQueue{
+  public function add(MiddlewareInterface $middleware){
     $this->middlewares[] = $middleware;
     return $this;
   }
@@ -26,7 +26,7 @@ class MiddlewareQueue{
    * @param  ResponseInterface $response
    * @return ResponseInterface
    */
-  public function handle(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface{
+  public function handle(ServerRequestInterface $request, ResponseInterface $response){
     $stack = $this->createStack($response);
     return $stack->handle($request);
   }
@@ -35,7 +35,7 @@ class MiddlewareQueue{
    * @param  ResponseInterface $response
    * @return RequestHandlerInterface
    */
-  protected function createStack(ResponseInterface $response): RequestHandlerInterface{
+  protected function createStack(ResponseInterface $response){
     return array_reduce(array_reverse($this->middlewares), function(
       RequestHandlerInterface $frame,
       MiddlewareInterface $middleware
@@ -48,7 +48,7 @@ class MiddlewareQueue{
    * @param ResponseInterface $response
    * @return RequestHandlerInterface
    */
-  protected function createLastHandler(ResponseInterface $response): RequestHandlerInterface{
+  protected function createLastHandler(ResponseInterface $response){
     return new class($response) implements RequestHandlerInterface{
 
       /**
@@ -67,7 +67,7 @@ class MiddlewareQueue{
        * @param ServerRequestInterface $request
        * @return ResponseInterface
        */
-      public function handle(ServerRequestInterface $request): ResponseInterface{
+      public function handle(ServerRequestInterface $request){
         return $this->response;
       }
 

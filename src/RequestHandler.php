@@ -30,7 +30,7 @@ class RequestHandler implements RequestHandlerInterface{
    * @param ServerRequestInterface $request
    * @return ResponseInterface
    */
-  public function handle(ServerRequestInterface $request): ResponseInterface{
+  public function handle(ServerRequestInterface $request){
     return $this->middleware->handle($request, $this->next);
   }
 
