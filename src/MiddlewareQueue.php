@@ -5,11 +5,6 @@ namespace V12\Http\Middleware;
 use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 use Psr\Http\Middleware\{MiddlewareInterface, RequestHandlerInterface};
 
-/**
- * Class MiddlewareQueue
- *
- * @package V12\Middleware\Server
- */
 class MiddlewareQueue{
 
   /**
@@ -27,17 +22,17 @@ class MiddlewareQueue{
   }
 
   /**
-   * @param ServerRequestInterface $request
-   * @param ResponseInterface      $response
+   * @param  ServerRequestInterface $request
+   * @param  ResponseInterface $response
    * @return ResponseInterface
    */
-  public function run(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface{
+  public function handle(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface{
     $stack = $this->createStack($response);
     return $stack->handle($request);
   }
 
   /**
-   * @param ResponseInterface $response
+   * @param  ResponseInterface $response
    * @return RequestHandlerInterface
    */
   protected function createStack(ResponseInterface $response): RequestHandlerInterface{
@@ -50,7 +45,7 @@ class MiddlewareQueue{
   }
 
   /**
-   * @param ResponseInterface      $response
+   * @param ResponseInterface $response
    * @return RequestHandlerInterface
    */
   protected function createLastHandler(ResponseInterface $response): RequestHandlerInterface{
@@ -62,8 +57,6 @@ class MiddlewareQueue{
       private $response;
 
       /**
-       *  constructor.
-       *
        * @param ResponseInterface $response
        */
       public function __construct(ResponseInterface $response){
