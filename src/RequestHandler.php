@@ -5,11 +5,6 @@ namespace V12\Http\Middleware;
 use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 use Psr\Http\Middleware\{MiddlewareInterface, RequestHandlerInterface};
 
-/**
- * Class MiddlewareFrame
- *
- * @package V12\Middleware\Server
- */
 class RequestHandler implements RequestHandlerInterface{
 
   /**
@@ -23,9 +18,7 @@ class RequestHandler implements RequestHandlerInterface{
   private $next;
 
   /**
-   * MiddlewareFrame constructor.
-   *
-   * @param MiddlewareInterface     $middleware
+   * @param MiddlewareInterface $middleware
    * @param RequestHandlerInterface $next
    */
   public function __construct(MiddlewareInterface $middleware, RequestHandlerInterface $next){
